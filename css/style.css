@@ -1,6 +1,35 @@
-h1 {
-  position: center;
+body {
+  text-align: center;
+  background-color: lightblue;
 }
+
+h1 {
+  font-family: 'Architects Daughter', cursive;
+}
+
+p {
+  font-size: 1.2em;
+}
+
 #playAgain {
   display: none;
+  margin: auto;
+  text-align: center;
+  background-color: blue
+}
+
+#start {
+  margin: auto;
+  background-color: rgb(5, 141, 50)
+}
+
+input[type=button] {
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+  font-family: 'Architects Daughter', cursive;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
 }

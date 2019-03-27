@@ -104,7 +104,7 @@ function start(){
     answers.push(q5);
   }
 
-  gameEnd();
+gameEnd();
   
 }
 
@@ -122,6 +122,7 @@ function restart() {
   result.innerHTML = 'Rather than just the usual paragraph where I tell you a little about me, how about we play a game? I promise it\'ll be fun!';
   startButton.style.display = 'block';
   playAgain.style.display = 'none';
+  answers = []
 }
 
 // function that capitalizes every first letter of a string.
