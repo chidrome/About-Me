@@ -1,5 +1,4 @@
 body {
-  text-align: center;
   background-color: lightblue;
 }
 
@@ -22,6 +21,11 @@ p {
   margin: auto;
   background-color: rgb(5, 141, 50)
 }
+
+.hideTen {
+  display: none;
+}
+
 
 input[type=button] {
   text-align: center;
