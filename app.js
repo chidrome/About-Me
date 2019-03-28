@@ -13,19 +13,24 @@ var answers = [
   ['no', 'n'],
   ['no', 'n'],
   ['yes', 'y'],
-  ['yes', 'y']
+  ['yes', 'y'],
+  34
 ];
 var alertAnswers = [
   ['That\'s right! On my spare time I love to play golf!', 'Unfortunately, I\'m not quite skilled enough to play football. But I LOVE to watch it!'],
   ['That\'s right! I was bitten with the travel bug at a young age.', 'As much as I love my home, I prefer to travel.'],
   ['Correct! I\'m one of three. The last one to be precise.', 'I\'ve always wondered what it\'d be like to be an only child.'],
   ['Correct! I\'ve been married for almost 7 years now.', 'That is incorrect. I\'ve been married for almost 7 years now.'],
-  ['Absolutely!', 'I\'ve always been passionate about coding. I\'m ecstatic about the journey ahead!']
+  ['Absolutely!', 'I\'ve always been passionate about coding. I\'m ecstatic about the journey ahead!'],
+  'That\'s right! I\'m 34 years young!'
 ];
 var result = document.getElementById('result');
 var startButton = document.getElementById('start');
 var playAgain = document.getElementById('playAgain');
 var correctAnswersCount = 0;
+// var numberOfGuesses = 0;
+var limitOfGuesses = 4;
+var questionSevenGuessLimit = 5;
 
 // let's add a dom listener to make sure the content is loaded before running any scripts
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,36 +45,78 @@ document.addEventListener('DOMContentLoaded', function() {
 // start the game!
 function start(){
   // let's get to know each other just a little.
-  var playerName = prompt('But first, I\'d like to know your name. What is your name?');
-  while(playerName === ''){
-    playerName = prompt('You didn\'t enter a name. Please enter one. First name is just fine.');
-  }
-  if(firstLetterCap(playerName) === 'Paolo'){
-    console.log('Whoa! What a coincedence, that\'s also my name!');
-    alert('Whoa! What a coincedence, that\'s also my name!');
-  } else {
-    console.log('Hi, ' + firstLetterCap(playerName) + '. Great to meet you! My name is Paolo!');
-    alert('Hi, ' + firstLetterCap(playerName) + '. Great to meet you! My name is Paolo!');
+  // var playerName = prompt('But first, I\'d like to know your name. What is your name?');
+  // while(playerName === ''){
+  //   playerName = prompt('You didn\'t enter a name. Please enter one. First name is just fine.');
+  // }
+  // if(firstLetterCap(playerName) === 'Paolo'){
+  //   console.log('Whoa! What a coincedence, that\'s also my name!');
+  //   alert('Whoa! What a coincedence, that\'s also my name!');
+  // } else {
+  //   console.log('Hi, ' + firstLetterCap(playerName) + '. Great to meet you! My name is Paolo!');
+  //   alert('Hi, ' + firstLetterCap(playerName) + '. Great to meet you! My name is Paolo!');
+  // }
+
+  // // now, the first 5 questions
+  // for(let i = 0; i < questions.length; i++) {
+  //   var promptAnswer = prompt(questions[i]);
+  //   while(promptAnswer.toLowerCase() !== 'yes' && promptAnswer.toLowerCase() !== 'y' && promptAnswer.toLowerCase() !== 'no' && promptAnswer.toLowerCase() !== 'n'){
+  //     promptAnswer = prompt('Please enter just Yes or No.');
+  //   }
+  //   if(promptAnswer === answers[i][0] || promptAnswer === answers[i][1]){
+  //     alert(alertAnswers[i][0]);
+  //     correctAnswersCount += 1;
+  //     userAnswers.push(promptAnswer);
+  //   } else {
+  //     alert(alertAnswers[i][1]);
+  //     userAnswers.push(promptAnswer);
+  //   }
+  // }
+  // // 6th question
+  // var q6 = prompt('How old do you think I am?');
+  // while(isNaN(q6)){
+  //   q6 = prompt('Please enter a number.');
+  // }
+  // while (q6 !== answers[5] && numberOfGuesses < limitOfGuesses ) {
+  //   if (q6 > answers[5]) {
+  //     q6 = prompt('You\'ve guessed too high! Keep guessing!');
+  //   } else if(q6 === answers[5]){
+  //     alert(alertAnswers[5]);
+  //     correctAnswersCount++;
+  //   } else {
+  //     q6 = prompt('You\'ve guessed too low! Keep guessing!');
+  //   }
+  //   numberOfGuesses++;
+  //   console.log(numberOfGuesses);
+  // }
+  // if(numberOfGuesses === limitOfGuesses){
+  //   alert('That\'s alright. That was a tough question. Let\'s move on.');
+  // }
+
+  // onto question 7
+  var q7 = prompt('Can you guess a company that I\'ve worked for?');
+  var q7Answers = ['Google', 'Microsoft', 'Amazon'];
+  var numberOfGuesses = 0; // zero out the number of guesses from question 6
+  for(let i = 0; i < q7Answers.length; i++){
+    if(q7.toLowerCase() === q7Answers[i].toLowerCase() && numberOfGuesses < questionSevenGuessLimit){
+      alert('That\'s Correct! I\'ve worked at all of these companies ' + q7Answers.join(', ') + ' before.');
+      correctAnswersCount++;
+    } else if(numberOfGuesses === questionSevenGuessLimit){
+      alert('Let me help you out a little here. I\'ve worked at all of these companies ' + q7Answers.join(', ') + '.');
+    } else {
+      q7 = prompt('Good guess, but try again.');
+      numberOfGuesses++;
+    }
   }
 
-  // now, the questions
-  for(var i = 0; i < questions.length; i++) {
-    var promptAnswer = prompt(questions[i]);
-    while(promptAnswer.toLowerCase() !== 'yes' && promptAnswer.toLowerCase() !== 'y' && promptAnswer.toLowerCase() !== 'no' && promptAnswer.toLowerCase() !== 'n'){
-      promptAnswer = prompt('Please enter just Yes or No.');
-    }
-    if(promptAnswer === answers[i][0] || promptAnswer === answers[i][1]){
-      alert(alertAnswers[i][0]);
-      correctAnswersCount += 1;
-      userAnswers.push(promptAnswer);
-    } else {
-      alert(alertAnswers[i][1]);
-      userAnswers.push(promptAnswer);
-    }
-    console.log('you\'re correct answer count is', correctAnswersCount);
-    gameEnd();
-    console.log(userAnswers);
-  }
+  // if(correctAnswersCount === 7){
+  //   alert('Awesome job ' + firstLetterCap(playerName) + '! You got all 7 questions correct!');
+  // } else {
+  //   alert('Well ' + firstLetterCap(playerName) + ', you got ' + correctAnswersCount + ' answers out of 7 correct. Better luck next time.');
+  // }
+  console.log('you\'re correct answer count is', correctAnswersCount);
+  gameEnd();
+  console.log(userAnswers);
 }
 
 // display a quick summary of myself in the paragraph and hide the play button
