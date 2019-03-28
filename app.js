@@ -28,7 +28,7 @@ var result = document.getElementById('result');
 var startButton = document.getElementById('start');
 var playAgain = document.getElementById('playAgain');
 var correctAnswersCount = 0;
-// var numberOfGuesses = 0;
+var numberOfGuesses = 0;
 var limitOfGuesses = 4;
 var questionSevenGuessLimit = 5;
 
@@ -83,9 +83,10 @@ function start(){
     } else if(q6 < answers[5]){
       q6 = prompt('You\'ve guessed too low! Keep guessing!');
     } else {
-      alert('That\'s Correct! I\'m ' + alertAnswers[5] + 'years young!');
+      alert(alertAnswers[5]);
       correctAnswersCount++;
       userAnswers.push(q6);
+      break;
     }
     numberOfGuesses++;
     console.log(numberOfGuesses);
@@ -97,7 +98,7 @@ function start(){
   // onto question 7
   var q7 = prompt('Can you guess a company that I\'ve worked for?');
   var q7Answers = ['google', 'microsoft', 'amazon'];
-  var numberOfGuesses = 0; // zero out the number of guesses from question 6
+  numberOfGuesses = 0; // zero out the number of guesses from question 6
   if(q7Answers.indexOf(q7.toLowerCase()) > -1 && numberOfGuesses < questionSevenGuessLimit){
     alert('That\'s Correct! I\'ve worked at all of these companies ' + q7Answers.join(', ') + ' before.');
     correctAnswersCount++;
@@ -119,7 +120,7 @@ function start(){
 
 // display a quick summary of myself in the paragraph and hide the play button
 function gameEnd() {
-  if(userAnswers.length === 1){
+  if(userAnswers.length === 7){
     result.innerHTML = 'Thanks for playing my game! Once again, my name is Paolo. On my spare time I love to golf. Having said that, I\'ve been married for almost 7 years now and most of my time these days is just spent with my wife and newborn. Being one of 3 siblings, I\'m hoping to have a big family myself. I love to travel! I\'ve been on both sides of the pond and I\'m currently trying to work on visiting all of Southeast Asia. My love and passion for coding has led me to the apprenticeship program at Amazon. I\'m super excited about this opportunity and being able to build things that\'ll help make people\'s lives easier!';
     startButton.style.display = 'none';
     playAgain.style.display = 'block';
