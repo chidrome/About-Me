@@ -22,9 +22,23 @@ p {
   background-color: rgb(5, 141, 50)
 }
 
-.hideTen {
-  display: none;
+#resultsBox {
+  display: flex;
+  padding: 1em 0 0 0;
 }
+
+#previousCompanies {
+  margin: 0 0 0 1em;
+}
+
+#topTen, #previousCompanies {
+  border: 4px solid rgb(92, 81, 81);
+  padding: 0 10px;
+}
+
+/* .hideTen {
+  display: none;
+} */
 
 
 input[type=button] {

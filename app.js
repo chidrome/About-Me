@@ -105,7 +105,7 @@ function start(){
     userAnswers.push(q7);
   } else {
     numberOfGuesses++;
-    prompt('Good guess, but try again.');
+    q7 = prompt('Good guess, but try again.');
   }
 
   if(correctAnswersCount === 7){
@@ -120,13 +120,12 @@ function start(){
 
 // display a quick summary of myself in the paragraph and hide the play button
 function gameEnd() {
-  if(userAnswers.length === 7){
-    result.innerHTML = 'Thanks for playing my game! Once again, my name is Paolo. On my spare time I love to golf. Having said that, I\'ve been married for almost 7 years now and most of my time these days is just spent with my wife and newborn. Being one of 3 siblings, I\'m hoping to have a big family myself. I love to travel! I\'ve been on both sides of the pond and I\'m currently trying to work on visiting all of Southeast Asia. My love and passion for coding has led me to the apprenticeship program at Amazon. I\'m super excited about this opportunity and being able to build things that\'ll help make people\'s lives easier!';
-    startButton.style.display = 'none';
-    playAgain.style.display = 'block';
-    playAgain.addEventListener('click', restart);
-    document.getElementById('topTen').classList.toggle('hideTen');
-  }
+  result.innerHTML = 'Thanks for playing my game! Once again, my name is Paolo. On my spare time I love to golf. Having said that, I\'ve been married for almost 7 years now and most of my time these days is just spent with my wife and newborn. Being one of 3 siblings, I\'m hoping to have a big family myself. I love to travel! I\'ve been on both sides of the pond and I\'m currently trying to work on visiting all of Southeast Asia. My love and passion for coding has led me to the apprenticeship program at Amazon. I\'m super excited about this opportunity and being able to build things that\'ll help make people\'s lives easier!';
+  startButton.style.display = 'none';
+  playAgain.style.display = 'block';
+  playAgain.addEventListener('click', restart);
+  document.getElementById('topTen').classList.toggle('hideTen');
+  document.getElementById('previousCompanies').classList.toggle('hideTen');
 }
 
 // restart the game. show the start button and reset the paragraph text
@@ -135,6 +134,8 @@ function restart() {
   startButton.style.display = 'block';
   playAgain.style.display = 'none';
   userAnswers = [];
+  document.getElementById('topTen').classList.add('hideTen');
+  document.getElementById('previousCompanies').classList.add('hideTen');
 }
 
 // function that capitalizes every first letter of a string.
